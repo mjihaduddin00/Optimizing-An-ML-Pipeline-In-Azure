@@ -14,13 +14,20 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 # Data is located at:
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
-ds = ### YOUR CODE HERE ###
+ds = Dataset.Tabular.from_delimited_files(path=TabularDatasetFactory)
 
 x, y = clean_data(ds)
 
 # TODO: Split data into train and test sets.
 
-### YOUR CODE HERE ###a
+x_train, x_test, y_train, y_test = train_test_split(
+    x, y, test_size=0.4, random_state=0
+)
+
+model = LinearRegression().fit(x_train, y_train)
+model.score(x_train, y_train)
+
+model.score(x_test, y_test)
 
 run = Run.get_context()
 
@@ -52,7 +59,7 @@ def clean_data(data):
     
 
 def main():
-    # Add arguments to script
+    MAX_DURATION_SECONDS_DEFAULT = 2592000
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--C', type=float, default=1.0, help="Inverse of regularization strength. Smaller values cause stronger regularization")

@@ -27,10 +27,10 @@ This project utilizes UCI Bank Marketing information as our dataset which direct
 4) Save Trained Optimized Model
 
 
-**Parameter Sampler**
+**Parameter Sampler: **
 I implemented the Random Parameter Sampling as it supports discrete and continuous hyperparameters, early termination policies, and delivers similar results at a faster rate than other Parameter Sampler's such as Grid Sampling.
 
-**Early Stopping Policy**
+**Early Stopping Policy: **
 I implemented a Bandit Policy as the three factors provided with implementing this policy (evaluation interval, delay evaluation, and slack factor) allow us to run experiments without having to stress over unneccessary experiments that run for a long period of time only to come out unneeded due to the primary metric not existing within the specified slack factor when compared to the best performing run.
 
 ## AutoML

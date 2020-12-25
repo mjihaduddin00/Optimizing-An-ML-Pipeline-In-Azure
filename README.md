@@ -26,7 +26,10 @@ This project utilizes UCI Bank Marketing information as our dataset which direct
 
 4) Save Trained Optimized Model
 
-Having implemented Logistic Regressional for our model in this binary classification problem with the aid of the HyperDrive tool to choose the best hyperparameter values from the parameter search space we can view the logistic (sigmoidal) function at work that leads to the estimations between the dependent/target variable and one or more independent variables. In the screenshots section, it can be viewed which HyperDrive Run gave the best results.
+Having implemented Logistic Regressional for our model in this binary classification problem with the aid of the HyperDrive tool to choose the best hyperparameter values from the parameter search space we can view the logistic (sigmoidal) function at work that leads to the estimations between the dependent/target variable and one or more independent variables. In the screenshots section, it can be viewed which HyperDrive Run gave the best results. For further clarification, the parameters being used in this model are the following:
+
+- Inverse of Regularization Strength (parser.add_argument('--C', type=float, default=1.0, help="Inverse of regularization strength. Smaller values cause stronger regularization"))
+- Maximum Number of Iterations to Converge (parser.add_argument('--max_iter', type=int, default=100, help="Maximum number of iterations to converge"))
 
 
 ## Parameter Sampler
@@ -42,13 +45,13 @@ I implemented a Bandit Policy as the three factors provided with implementing th
 4) Configuration of AutoML
 5) Save Best Model
 
-This led to the discovery that the VotingEnsemble was the best model for our dataset in terms of prediction and accuracy as it highlights feature important values, pattern discovery in data during training, and different metrics with their different values for model interpretability and explanation. This can be viewed further in the screenshots folder.
+This led to the discovery that the VotingEnsemble was the best model for our dataset in terms of prediction and accuracy as it highlights feature important values, pattern discovery in data during training, and different metrics with their different values for model interpretability and explanation. This can be viewed further in the screenshots folder. The VotingEnsemble in this Classification Model is predicting the class with the largest summed probability from models which means that it utilizes features such as K-Nearest Neighbors (in Explanations (preview) we see that as Global Importance of Emp.Var.Rate being greater than 40% and in Summary Importance as well as the Confusion Matrix displaying a 96% True Label at 0, 0 and a 43% true label at 0, 1) as parameters to make its determination labeling this model to be a Soft Voting - VotingEnsemble Classification Model.
 
 ## Pipeline Comparison
 The differences between the models exist in their configurations. However, they follow similar data processing steps which resulted in similar accuracies (HyperDrive Approach - 91% & AutoML Approach - 92%). The AutoML Approach was more accurate, but took longer time to come up with the best model. The ML Model is fixed in our approach without AutoML and HyperDrive is utilized to find optimal hyperparameters whereas with the AutoML approach different models are automatically generated with their own optimal hyperparameter values allowing for the best model to be selected.
 
 ## Future Work
-I would utilize additional interactive visualizations to determine which groups of users are being negatively impacted by a model. I would then compare multiple models in terms of their fairness and performance with these impacted groups in mind. I would also have liked to export the model via ONNX to be able to have the experiment available via my mobile device.
+I would utilize additional interactive visualizations to determine which groups of users are being negatively impacted by a model. I would then compare multiple models in terms of their fairness and performance with these impacted groups in mind. I would also look into extending the parameter search space to see the effect it has on determining the model and accuracy. I would also have liked to export the model via ONNX to be able to have the experiment available via my mobile device.
 
 ## Clean Up
 The cluster was deleted as can be viewed in the screenshots folder.

@@ -45,7 +45,20 @@ I implemented a Bandit Policy as the three factors provided with implementing th
 4) Configuration of AutoML
 5) Save Best Model
 
-This led to the discovery that the VotingEnsemble was the best model for our dataset in terms of prediction and accuracy as it highlights feature important values, pattern discovery in data during training, and different metrics with their different values for model interpretability and explanation. This can be viewed further in the screenshots folder. The VotingEnsemble in this Classification Model is predicting the class with the largest summed probability from models which means that it utilizes features such as K-Nearest Neighbors (in Explanations (preview) we see that as Global Importance of Emp.Var.Rate being greater than 40% and in Summary Importance as well as the Confusion Matrix displaying a 96% True Label at 0, 0 and a 43% true label at 0, 1) as parameters to make its determination labeling this model to be a Soft Voting - VotingEnsemble Classification Model.
+This led to the discovery that the VotingEnsemble was the best model for our dataset in terms of prediction and accuracy as it highlights feature important values, pattern discovery in data during training, and different metrics with their different values for model interpretability and explanation. This can be viewed further in the screenshots folder. The VotingEnsemble in this Classification Model is predicting the class with the largest summed probability from models which means that it utilizes features such as K-Nearest Neighbors (in Explanations (preview) we see that as Global Importance of Emp.Var.Rate being greater than 40% and in Summary Importance as well as the Confusion Matrix displaying a 96% True Label at 0, 0 and a 43% true label at 0, 1) as parameters to make its determination labeling this model to be a Soft Voting - VotingEnsemble Classification Model. We also notice that an algorithm consistently tests during our AutoML Run several times which is the XgboostClassifier which has a paramaeter set of n_estimator = 10, learning_rate = 0.1, min_sample_split = 3, and max-depth = 4. We also notice in Cell 18 the following parameters:
+
+- fit_intercept = true
+- intercept_scaling = 1
+- l1_ratio = None
+- max_iter = 100
+- multi_class = 'ovr'
+- n_jobs = 1
+- penalty = 'l1'
+- random_state = None
+- solver = 'saga'
+- tol = 0.0001
+- verbose = 0
+- warm_start = False
 
 ## Pipeline Comparison
 The differences between the models exist in their configurations. However, they follow similar data processing steps which resulted in similar accuracies (HyperDrive Approach - 91% & AutoML Approach - 92%). The AutoML Approach was more accurate, but took longer time to come up with the best model. The ML Model is fixed in our approach without AutoML and HyperDrive is utilized to find optimal hyperparameters whereas with the AutoML approach different models are automatically generated with their own optimal hyperparameter values allowing for the best model to be selected.
